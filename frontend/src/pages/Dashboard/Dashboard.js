@@ -67,12 +67,12 @@ const Dashboard = () => {
             <p><strong>Status:</strong> <span className={`status-badge status-${merchant.status === 'active' ? 'success' : 'pending'}`}>{merchant.status}</span></p>
             {localStorage.getItem('merchant_api_secret') && (
               <p style={{ fontSize: '12px', color: '#28a745', marginTop: '10px' }}>
-                ✓ API Secret is stored and will be pre-filled in checkout
+                API Secret is stored and will be pre-filled in checkout
               </p>
             )}
             {!localStorage.getItem('merchant_api_secret') && (
               <p style={{ fontSize: '12px', color: '#dc3545', marginTop: '10px' }}>
-                ⚠️ API Secret not found in storage. You'll need to enter it manually in checkout.
+                API Secret not found in storage. You'll need to enter it manually in checkout.
                 <br />
                 If you've lost your secret, you'll need to create a new merchant account.
               </p>

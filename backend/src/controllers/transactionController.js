@@ -19,7 +19,6 @@ export const createCheckout = async (req, res, next) => {
       status: 'pending',
     });
 
-    // Create signature for transaction confirmation
     const signaturePayload = `${transaction._id}|${amount}`;
     const signature = crypto
       .createHmac('sha256', process.env.HMAC_SECRET || 'dummy')
@@ -47,12 +46,10 @@ export const processPayment = async (req, res, next) => {
     const transaction = await Transaction.findById(transaction_id);
     if (!transaction) return res.status(404).json({ message: 'Transaction not found' });
 
-    // Simulate random payment result
-    const success = Math.random() > 0.2; // 80% success rate
+    const success = Math.random() > 0.2;
     transaction.status = success ? 'success' : 'failed';
     await transaction.save();
 
-    // Notify merchant via webhook (mock)
     if (process.env.WEBHOOK_URL) {
       await axios.post(process.env.WEBHOOK_URL, {
         transaction_id: transaction._id,
@@ -88,7 +85,6 @@ export const getHistory = async (req, res, next) => {
 
 export const webhook = async (req, res, next) => {
   try {
-    console.log('Webhook received:', req.body);
     res.sendStatus(200);
   } catch (err) {
     next(err);

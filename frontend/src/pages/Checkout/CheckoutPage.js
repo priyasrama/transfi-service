@@ -4,7 +4,7 @@ import api from '../../api/axios';
 import { generateHMACSignature } from '../../utils/hmac';
 
 const CheckoutPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [amount, setAmount] = useState('');
   const [currency, setCurrency] = useState('INR');
@@ -45,29 +45,15 @@ const CheckoutPage = () => {
     }
 
     try {
-      // Trim whitespace from API credentials
       const trimmedApiKey = apiKey.trim();
       const trimmedApiSecret = apiSecret.trim();
-
-      // Ensure amount is a number (not string) to match backend parsing
       const body = {
         amount: parseFloat(amount),
         currency: currency || 'INR',
         customer_email: email.trim(),
       };
-
-      // Generate signature BEFORE sending (using exact body that will be sent)
-      // Important: Use the exact same JSON.stringify that Express will use
       const bodyString = JSON.stringify(body);
       const signature = generateHMACSignature(trimmedApiSecret, body);
-
-      // Debug: log the signature generation details
-      console.log('\n=== Frontend HMAC Generation ===');
-      console.log('Body object:', body);
-      console.log('Body string:', bodyString);
-      console.log('API Secret length:', trimmedApiSecret.length);
-      console.log('Generated signature:', signature);
-      console.log('================================\n');
 
       const { data } = await api.post(
         '/transaction/checkout-session',
@@ -91,10 +77,6 @@ const CheckoutPage = () => {
       const errorDetails = err.response?.data?.details;
       
       if (errorDetails) {
-        console.error('HMAC Error Details:', errorDetails);
-        console.error('Expected signature:', errorDetails.expected);
-        console.error('Received signature:', errorDetails.received);
-        console.error('Body used:', errorDetails.body);
         setError(`${errorMsg}\n\nCheck browser console (F12) and backend console for detailed comparison.\n\nCommon issues:\n- Wrong API Secret (use the plain text secret from merchant creation)\n- Secret has extra spaces (try clearing and re-entering)\n- API Key doesn't match your merchant account`);
       } else {
         setError(errorMsg);

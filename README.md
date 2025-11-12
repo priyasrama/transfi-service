@@ -30,13 +30,11 @@ This repository contains the backend and frontend code for the Transfi Service (
 3. **Run the applications:**
    - Backend:  
      ```bash
+     # start MongoDB
+     brew services start mongodb-community@7.0 
      npm start
      ```
    - Frontend:  
      ```bash
      npm start
      ```
-
-## Contributing
-
-Feel free to open issues or submit pull requests.
