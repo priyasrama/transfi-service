@@ -30,18 +30,12 @@ if (!process.env.ENCRYPTION_KEY) {
 
 const app = express();
 
-// ------------------- SECURITY MIDDLEWARES -------------------
-
-// Connect DB
 connectDB();
 
-// Parse JSON body
 app.use(express.json({ limit: '10kb' }));
 
-// Helmet: set secure HTTP headers
 app.use(helmet());
 
-// CORS: allow only your frontend domain
 const allowedOrigins = [process.env.FRONTEND_URL];
 app.use(
   cors({
@@ -53,33 +47,24 @@ app.use(
   })
 );
 
-// Sanitize request data (prevent NoSQL injection)
 app.use(mongoSanitize());
 
-// Global rate limiter (optional)
 const globalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 min window
-  max: 100, // 100 requests per 15 minutes per IP
+  windowMs: 15 * 60 * 1000,
+  max: 100,
   standardHeaders: true,
   legacyHeaders: false,
 });
 app.use(globalLimiter);
-
-// ------------------- ROUTES -------------------
-
 app.get('/', (req, res) => {
-  res.send('🚀 Mini Payment Gateway API is running');
+  res.send('Mini Payment Gateway API is running');
 });
 
 app.use('/api/auth', authRoutes);
 app.use('/api/merchant', merchantRoutes);
 app.use('/api/transaction', transactionRoutes);
-
-// ------------------- ERROR HANDLING -------------------
-
 app.use(errorHandler);
 
-// ------------------- SERVER -------------------
 
 const PORT = process.env.PORT || 5050;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

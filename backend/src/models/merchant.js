@@ -15,7 +15,7 @@ const merchantSchema = new mongoose.Schema({
     unique: true,
   },
   api_secret: {
-    type: String, // encrypted before saving
+    type: String,
   },
   status: {
     type: String,

@@ -1,7 +1,6 @@
 import CryptoJS from 'crypto-js';
 
-// Read ENCRYPTION_KEY at runtime, not at module load time
-// This ensures dotenv.config() has run first
+
 const getEncryptionKey = () => {
   const key = process.env.ENCRYPTION_KEY;
   if (!key) {

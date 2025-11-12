@@ -27,12 +27,10 @@ const Dashboard = () => {
     if (!name) return;
     try {
       const { data } = await api.post('/merchant/create', { business_name: name });
-      // Store API credentials temporarily for checkout page
       localStorage.setItem('merchant_api_key', data.api_key);
       localStorage.setItem('merchant_api_secret', data.api_secret);
       alert(`Your API Key: ${data.api_key}\nYour API Secret: ${data.api_secret}\n\n⚠️ Save your API Secret - it won't be shown again!`);
       setMerchant(data);
-      // Refresh to get updated merchant info
       window.location.reload();
     } catch (err) {
       alert('Failed to create merchant account');
@@ -40,7 +38,6 @@ const Dashboard = () => {
   };
 
   const handleGoToCheckout = () => {
-    // Store API key in localStorage for checkout page to use
     if (merchant?.api_key) {
       localStorage.setItem('merchant_api_key', merchant.api_key);
     }

@@ -32,6 +32,6 @@ const transactionSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-transactionSchema.index({ merchant_id: 1, createdAt: -1 }); // useful for analytics
+transactionSchema.index({ merchant_id: 1, createdAt: -1 });
 
 export default mongoose.model('Transaction', transactionSchema);

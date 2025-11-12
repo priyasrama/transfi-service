@@ -14,7 +14,6 @@ const CheckoutPage = () => {
   const [transaction, setTransaction] = useState(null);
   const [error, setError] = useState('');
 
-  // Pre-fill API key from localStorage if available
   useEffect(() => {
     const storedApiKey = localStorage.getItem('merchant_api_key');
     const storedApiSecret = localStorage.getItem('merchant_api_secret');

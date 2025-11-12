@@ -19,7 +19,6 @@ code {
     monospace;
 }
 
-/* ========== AUTH PAGES ========== */
 .auth-container {
   max-width: 400px;
   margin: 80px auto;
@@ -106,7 +105,6 @@ code {
   text-decoration: underline;
 }
 
-/* ========== DASHBOARD ========== */
 .dashboard-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -166,7 +164,6 @@ code {
   padding-bottom: 10px;
 }
 
-/* ========== BUTTONS ========== */
 button {
   padding: 12px 24px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -213,7 +210,6 @@ button:disabled {
   box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
 }
 
-/* ========== FORMS ========== */
 form {
   display: flex;
   flex-direction: column;
@@ -245,7 +241,6 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* ========== TABLES ========== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -284,7 +279,6 @@ table tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Status badges */
 .status-badge {
   display: inline-block;
   padding: 6px 12px;
@@ -309,7 +303,6 @@ table tbody tr:last-child td {
   color: #721c24;
 }
 
-/* ========== CHECKOUT PAGE ========== */
 .checkout-container {
   max-width: 500px;
   margin: 80px auto;
@@ -369,7 +362,6 @@ table tbody tr:last-child td {
   border-color: #f5c6cb;
 }
 
-/* ========== LOADING & ERROR STATES ========== */
 .loading {
   text-align: center;
   padding: 40px;
@@ -393,7 +385,6 @@ table tbody tr:last-child td {
   font-size: 16px;
 }
 
-/* ========== ANALYTICS ========== */
 .analytics-container {
   display: flex;
   justify-content: center;
@@ -401,7 +392,6 @@ table tbody tr:last-child td {
   padding: 20px;
 }
 
-/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
   .auth-container,
   .checkout-container {
@@ -431,7 +421,6 @@ table tbody tr:last-child td {
   }
 }
 
-/* ========== NAVIGATION ========== */
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -459,7 +448,6 @@ table tbody tr:last-child td {
   font-size: 14px;
 }
 
-/* ========== UTILITY CLASSES ========== */
 .text-center {
   text-align: center;
 }

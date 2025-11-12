@@ -11,7 +11,6 @@ import { authLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();
 
-// Public routes
 router.post('/register', authLimiter, registerValidation, register);
 router.post('/login', authLimiter, login);
 router.post('/refresh', refresh);
