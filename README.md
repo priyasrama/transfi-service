@@ -5,7 +5,7 @@ This repository contains the backend and frontend code for the Transfi Service (
 ## Structure
 
 - `frontend/` &mdash; React frontend application
-- `backend/` &mdash; Backend service (add details if applicable)
+- `backend/` &mdash; Backend service
 
 ## Getting Started
 
